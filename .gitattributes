@@ -1,0 +1,4 @@
+* text=auto eol=lf
+LICENSE -text
+registry/** -text
+assets/** -text
