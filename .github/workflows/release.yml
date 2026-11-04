@@ -1,0 +1,46 @@
+name: Modules
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: python tools/release_modules.py build
+      - run: python -m unittest discover -s tools -p test_modules.py
+      - run: python tools/release_modules.py verify
+      - name: Generated catalog is committed
+        run: git diff --exit-code -- registry
+      - name: Release tag matches catalog version
+        if: startsWith(github.ref, 'refs/tags/v')
+        shell: bash
+        run: test "$GITHUB_REF_NAME" = "v$(cat VERSION)"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: light-modules
+          path: dist/*
+          if-no-files-found: error
+  publish:
+    needs: verify
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with: { name: light-modules, path: dist }
+      - name: Publish verified packages
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          printf 'Official language and tool modules for Light IDE 1.1.0 and newer. Includes individual versioned ZIPs, the catalog, a complete offline registry and SHA-256 checksums.\n\nModule sources and original licenses are preserved in this repository and in every package.\n' > NOTES.md
+          gh release create "$GITHUB_REF_NAME" dist/* --target "$GITHUB_SHA" --title "Light Modules ${GITHUB_REF_NAME#v}" --notes-file NOTES.md
