@@ -403,7 +403,7 @@
     {
       "id": "docker",
       "name": "Docker",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "category": "Tools",
       "summary": "Dockerfile and Compose: syntax, completion, stages/services outline, build checks, images, containers and Compose lifecycle commands.",
       "cover": "cover.png",
@@ -411,8 +411,8 @@
       "files": [
         {
           "name": "module.json",
-          "size": 10606,
-          "sha256": "73475dfb842a992ea2d4c715819b23fe2e78b21c699033450d38b1b48c8a64a7"
+          "size": 10698,
+          "sha256": "7ca84c272174a3027ff1707ff383ec8bad0c3207eca4d74bbeddcf56266dc259"
         },
         {
           "name": "LICENSE",
@@ -453,9 +453,9 @@
       },
       "min_ide": "1.1.0",
       "archive": {
-        "url": "https://github.com/sherhn/Light-Modules/releases/download/v1.0.3/docker-1.0.2.zip",
-        "size": 29752,
-        "sha256": "4f827708935486fdbf0abdd21ec664db6bf2e1f4b5abbc9dde3628a6e9351b46"
+        "url": "https://github.com/sherhn/Light-Modules/releases/download/v1.0.3/docker-1.0.3.zip",
+        "size": 29844,
+        "sha256": "1bfa0d63493d77d3e2ad7319bffd1718edf3c90d6a8a9d9c25959c7265cf6beb"
       }
     },
     {
