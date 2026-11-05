@@ -25,3 +25,7 @@ Update the changed module's version in `tools/registry_src`, bump `VERSION` for 
 ## Your own module
 
 Use the official modules as examples of the `module.json` format. A registry contains `index.json` and the module folders referenced by it. In Light's Modules settings, enter its HTTPS address or select its local folder. Third-party modules can specify commands that run with your user account; only install modules from authors you trust.
+
+## Signed automatic updates
+
+Light 1.3.0 and newer verifies `updates.json` with the embedded Ed25519 public key before reading the catalog or preparing automatic module updates. The private seed is held only in GitHub Actions Secrets. Old IDE versions can still install packages manually. Local modifications and custom registries are not automatically replaced.
