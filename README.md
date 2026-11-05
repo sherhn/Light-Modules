@@ -38,3 +38,5 @@ The optional `code_actions` manifest list adds run buttons beside declarations. 
 Python supplies top-level zero-argument functions (including async); JavaScript supplies exported zero-argument ESM functions/arrows and explicit CommonJS export assignments. Loading a file runs its top-level code; the Python `__main__` guard is not invoked. Functions requiring arguments are left to tests or normal file execution. Docker provides named build stages and Compose actions only under `services`, excluding volumes and networks. Make/npm tasks also receive IDE run buttons at their declarations.
 
 Older IDEs ignore `code_actions` and retain the existing language, run, check and test commands. This metadata does not trigger execution or install tools automatically.
+
+Module versions are independent of the catalog version. `tools/module-versions.json` records the highest built version of each module. Registry generation rejects version decreases and updates this file when a module version increases; commit it with the generated registry.

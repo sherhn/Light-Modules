@@ -80,4 +80,4 @@ MODULE["code_actions"] = [{'language': 'python',
              'if inspect.isawaitable(r) else None" "{file}" "{symbol}") else (py -c "import '
              "asyncio,importlib.util,inspect,os,sys;p,s=sys.argv[1:3];sys.dont_write_bytecode=True;sys.path.insert(0,os.path.dirname(p));sp=importlib.util.spec_from_file_location('__light_code__',p);m=importlib.util.module_from_spec(sp);sys.modules[sp.name]=m;sp.loader.exec_module(m);r=getattr(m,s)();asyncio.run(r) "
              'if inspect.isawaitable(r) else None" "{file}" "{symbol}")'}]
-MODULE["version"] = '1.0.2'
+MODULE["version"] = '1.1.2'

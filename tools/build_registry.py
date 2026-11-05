@@ -58,9 +58,25 @@ def module_notices(module, destination):
     (destination / "THIRD_PARTY_NOTICES.md").write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\n")
 
 
+
+def check_module_versions(modules, previous):
+    """Module versions are independent of the catalog version and never decrease."""
+    versions = dict(previous)
+    for module in modules:
+        current = tuple(map(int, module['version'].split('.')))
+        old = tuple(map(int, previous.get(module['id'], '0.0.0').split('.')))
+        if current < old:
+            raise ValueError(f"{module['id']}: version {module['version']} is older than recorded {previous[module['id']]}")
+        versions[module['id']] = module['version']
+    return versions
+
 def main(argv):
     redraw = "--covers" in argv
     mods = load_modules()
+    history = ROOT / "tools/module-versions.json"
+    previous = json.loads(history.read_text(encoding="utf-8")) if history.exists() else {}
+    versions = check_module_versions(mods, previous)
+    write_json(history, versions)
     entries = []
     for m in mods:
         d = OUT / "modules" / m["id"]

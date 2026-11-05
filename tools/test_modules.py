@@ -74,5 +74,12 @@ class ModuleReleaseTests(unittest.TestCase):
                 self.assertEqual(result.returncode, 0, result.stderr)
                 self.assertIn('FUNCTION', result.stdout)
 
+
+    def test_catalog_numbers_cannot_downgrade_independent_module_versions(self):
+        from build_registry import check_module_versions
+        with self.assertRaisesRegex(ValueError, 'older than recorded'):
+            check_module_versions([{'id':'python','version':'1.0.2'}], {'python':'1.1.1'})
+        self.assertEqual(check_module_versions([{'id':'python','version':'1.1.2'}], {'python':'1.1.1'}), {'python':'1.1.2'})
+
 if __name__ == '__main__':
     unittest.main()
