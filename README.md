@@ -29,3 +29,12 @@ Use the official modules as examples of the `module.json` format. A registry con
 ## Signed automatic updates
 
 Light 1.3.0 and newer verifies `updates.json` with the embedded Ed25519 public key before reading the catalog or preparing automatic module updates. The private seed is held only in GitHub Actions Secrets. Old IDE versions can still install packages manually. Local modifications and custom registries are not automatically replaced.
+
+
+### Buttons beside runnable code (Light 1.4+)
+
+The optional `code_actions` manifest list adds run buttons beside declarations. Each entry has `language`, `name`, a multiline `pattern`, `command`, optional `windows` override and optional `context` pattern restricting declarations to matching regions. A named `symbol` capture fills `{symbol}` in the label and command; existing file placeholders remain available. Captures are validated as names, and declarations inside highlighted comments/strings are excluded. Rules can be added by custom modules without editing the IDE.
+
+Python supplies top-level zero-argument functions (including async); JavaScript supplies exported zero-argument ESM functions/arrows and explicit CommonJS export assignments. Loading a file runs its top-level code; the Python `__main__` guard is not invoked. Functions requiring arguments are left to tests or normal file execution. Docker provides named build stages and Compose actions only under `services`, excluding volumes and networks. Make/npm tasks also receive IDE run buttons at their declarations.
+
+Older IDEs ignore `code_actions` and retain the existing language, run, check and test commands. This metadata does not trigger execution or install tools automatically.

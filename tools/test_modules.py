@@ -41,5 +41,38 @@ class ModuleReleaseTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'checksum'):
                 release.verify_registry(target)
 
+
+    def test_python_functions_keep_import_state_sibling_imports_async_and_main_guard(self):
+        import shlex, subprocess, sys
+        module = json.loads((release.ROOT / 'registry/modules/python/module.json').read_text(encoding='utf-8'))
+        code = shlex.split(module['code_actions'][0]['command'])[2]
+        with tempfile.TemporaryDirectory() as temporary:
+            folder = Path(temporary) / 'code space пример'
+            folder.mkdir()
+            (folder / 'sibling.py').write_text('VALUE = 42\n')
+            source = folder / 'source.py'
+            source.write_text('from dataclasses import dataclass\nfrom sibling import VALUE\n@dataclass\nclass Value:\n    number: int = VALUE\ndef ping():\n    print("SYNC-FUNCTION", Value().number)\nasync def async_ping():\n    print("ASYNC-FUNCTION")\nif __name__ == "__main__":\n    print("MUST-NOT-RUN")\n')
+            for function, expected in [('ping', 'SYNC-FUNCTION 42'), ('async_ping', 'ASYNC-FUNCTION')]:
+                result = subprocess.run([sys.executable, '-c', code, str(source), function], capture_output=True, text=True, timeout=30)
+                self.assertEqual(result.returncode, 0, result.stderr)
+                self.assertIn(expected, result.stdout)
+                self.assertNotIn('MUST-NOT-RUN', result.stdout)
+                self.assertFalse((folder / '__pycache__').exists())
+
+    def test_javascript_exported_functions_work_in_esm_and_commonjs(self):
+        import shlex, shutil, subprocess
+        node = shutil.which('node')
+        if not node:
+            self.skipTest('Node is not installed')
+        module = json.loads((release.ROOT / 'registry/modules/javascript/module.json').read_text(encoding='utf-8'))
+        code = shlex.split(module['code_actions'][0]['command'])[3]
+        with tempfile.TemporaryDirectory() as temporary:
+            for extension, content in [('mjs', "export async function ping() { console.log('ESM-FUNCTION'); }"), ('cjs', "exports.ping = () => console.log('CJS-FUNCTION');")]:
+                source = Path(temporary) / ('code ~ # % пример.' + extension)
+                source.write_text(content)
+                result = subprocess.run([node, '--input-type=module', '-e', code, str(source), 'ping'], capture_output=True, text=True, timeout=30)
+                self.assertEqual(result.returncode, 0, result.stderr)
+                self.assertIn('FUNCTION', result.stdout)
+
 if __name__ == '__main__':
     unittest.main()

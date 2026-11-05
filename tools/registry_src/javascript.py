@@ -74,3 +74,29 @@ MODULE = module(
     tools=[dict(name="Node.js and npm", programs=["node", "npm"], required=["node", "npm"], apt="nodejs npm")],
     detect=dict(extensions=["js", "mjs", "cjs", "jsx"], files=["package.json", "package-lock.json", "yarn.lock", "pnpm-lock.yaml"]),
 )
+
+# Code actions: optional metadata ignored by older IDEs.
+MODULE["code_actions"] = [{'language': 'javascript',
+  'name': "Run function '{symbol}'",
+  'pattern': '^export[ \\t]+(?:async[ \\t]+)?function[ \\t]+(?P<symbol>[A-Za-z_]\\w*)[ \\t]*\\([ \\t]*\\)',
+  'command': 'node --input-type=module -e "const u=await import(\'node:url\');const m=await '
+             'import(u.pathToFileURL(process.argv[1]).href);const '
+             "f=m[process.argv[2]]??m.default?.[process.argv[2]];if(typeof f!=='function')throw Error('Function is not "
+             'exported\');await f();" "{file}" "{symbol}"'},
+ {'language': 'javascript',
+  'name': "Run function '{symbol}'",
+  'pattern': '^export[ \\t]+(?:const|let|var)[ \\t]+(?P<symbol>[A-Za-z_]\\w*)[ \\t]*=[ \\t]*(?:async[ \\t]+)?\\([ '
+             '\\t]*\\)[ \\t]*=>',
+  'command': 'node --input-type=module -e "const u=await import(\'node:url\');const m=await '
+             'import(u.pathToFileURL(process.argv[1]).href);const '
+             "f=m[process.argv[2]]??m.default?.[process.argv[2]];if(typeof f!=='function')throw Error('Function is not "
+             'exported\');await f();" "{file}" "{symbol}"'},
+ {'language': 'javascript',
+  'name': "Run function '{symbol}'",
+  'pattern': '^(?:module\\.)?exports\\.(?P<symbol>[A-Za-z_]\\w*)[ \\t]*=[ \\t]*(?:async[ \\t]+)?(?:function[ '
+             '\\t]*(?:[A-Za-z_]\\w*)?[ \\t]*)?\\([ \\t]*\\)[ \\t]*(?:=>|\\{)',
+  'command': 'node --input-type=module -e "const u=await import(\'node:url\');const m=await '
+             'import(u.pathToFileURL(process.argv[1]).href);const '
+             "f=m[process.argv[2]]??m.default?.[process.argv[2]];if(typeof f!=='function')throw Error('Function is not "
+             'exported\');await f();" "{file}" "{symbol}"'}]
+MODULE["version"] = '1.5.1'

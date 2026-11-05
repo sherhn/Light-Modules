@@ -66,3 +66,18 @@ MODULE = module(
                     "tests/test_core.py": "from app.core import add\n\n\ndef test_add():\n    assert add(2, 3) == 5\n"}),
     ],
 )
+
+# Code actions: optional metadata ignored by older IDEs.
+MODULE["code_actions"] = [{'language': 'python',
+  'name': "Run function '{symbol}'",
+  'pattern': '^((?:async[ \\t]+)?def)[ \\t]+(?P<symbol>[A-Za-z_]\\w*)[ \\t]*\\([ \\t]*\\)[ \\t]*(?:->[^:\\n]+)?[ '
+             '\\t]*:',
+  'command': 'python3 -c "import '
+             "asyncio,importlib.util,inspect,os,sys;p,s=sys.argv[1:3];sys.dont_write_bytecode=True;sys.path.insert(0,os.path.dirname(p));sp=importlib.util.spec_from_file_location('__light_code__',p);m=importlib.util.module_from_spec(sp);sys.modules[sp.name]=m;sp.loader.exec_module(m);r=getattr(m,s)();asyncio.run(r) "
+             'if inspect.isawaitable(r) else None" "{file}" "{symbol}"',
+  'windows': 'where py >nul 2>nul & if errorlevel 1 (python -c "import '
+             "asyncio,importlib.util,inspect,os,sys;p,s=sys.argv[1:3];sys.dont_write_bytecode=True;sys.path.insert(0,os.path.dirname(p));sp=importlib.util.spec_from_file_location('__light_code__',p);m=importlib.util.module_from_spec(sp);sys.modules[sp.name]=m;sp.loader.exec_module(m);r=getattr(m,s)();asyncio.run(r) "
+             'if inspect.isawaitable(r) else None" "{file}" "{symbol}") else (py -c "import '
+             "asyncio,importlib.util,inspect,os,sys;p,s=sys.argv[1:3];sys.dont_write_bytecode=True;sys.path.insert(0,os.path.dirname(p));sp=importlib.util.spec_from_file_location('__light_code__',p);m=importlib.util.module_from_spec(sp);sys.modules[sp.name]=m;sp.loader.exec_module(m);r=getattr(m,s)();asyncio.run(r) "
+             'if inspect.isawaitable(r) else None" "{file}" "{symbol}")'}]
+MODULE["version"] = '1.0.2'

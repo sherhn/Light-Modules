@@ -21,3 +21,31 @@ MODULE = module(
     tools=[dict(name="Docker Engine and Compose", programs=["docker"], apt="docker.io docker-compose-v2")],
     detect=dict(extensions=["dockerfile"], files=["Dockerfile", "Containerfile", "Dockerfile.*", "Containerfile.*", ".dockerignore", "*.dockerignore"] + COMPOSE),
 )
+
+# Code actions: optional metadata ignored by older IDEs.
+MODULE["code_actions"] = [{'language': 'dockerfile',
+  'name': "Docker: Build stage '{symbol}'",
+  'pattern': '(?i)^[ \\t]*FROM[ \\t]+(?:--[^ \\t\\n]+[ \\t]+)*[^ \\t\\n]+[ \\t]+AS[ '
+             '\\t]+(?P<symbol>[A-Za-z_][A-Za-z0-9_.-]*)[ \\t]*(?:#.*)?$',
+  'command': 'docker build --target "{symbol}" -f "{file}" -t "{image}:{symbol}" "{dir}"'},
+ {'language': 'docker-compose',
+  'name': "Compose: Build service '{symbol}'",
+  'pattern': '^  (?P<symbol>[A-Za-z_][A-Za-z0-9_.-]*)[ \\t]*:',
+  'context': '^services:[^\\n]*(?:\\n(?:[ \\t]+[^\\n]*|[ \\t]*|#[^\\n]*))*',
+  'command': 'docker compose -f "{file}" build "{symbol}"'},
+ {'language': 'docker-compose',
+  'name': "Compose: Start service '{symbol}'",
+  'pattern': '^  (?P<symbol>[A-Za-z_][A-Za-z0-9_.-]*)[ \\t]*:',
+  'context': '^services:[^\\n]*(?:\\n(?:[ \\t]+[^\\n]*|[ \\t]*|#[^\\n]*))*',
+  'command': 'docker compose -f "{file}" up -d "{symbol}"'},
+ {'language': 'docker-compose',
+  'name': "Compose: Stop service '{symbol}'",
+  'pattern': '^  (?P<symbol>[A-Za-z_][A-Za-z0-9_.-]*)[ \\t]*:',
+  'context': '^services:[^\\n]*(?:\\n(?:[ \\t]+[^\\n]*|[ \\t]*|#[^\\n]*))*',
+  'command': 'docker compose -f "{file}" stop "{symbol}"'},
+ {'language': 'docker-compose',
+  'name': "Compose: Service logs '{symbol}'",
+  'pattern': '^  (?P<symbol>[A-Za-z_][A-Za-z0-9_.-]*)[ \\t]*:',
+  'context': '^services:[^\\n]*(?:\\n(?:[ \\t]+[^\\n]*|[ \\t]*|#[^\\n]*))*',
+  'command': 'docker compose -f "{file}" logs --no-color --tail 200 "{symbol}"'}]
+MODULE["version"] = '1.0.2'
