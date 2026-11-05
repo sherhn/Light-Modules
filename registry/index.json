@@ -48,7 +48,7 @@
       },
       "min_ide": "1.1.0",
       "archive": {
-        "url": "https://github.com/sherhn/Light-Modules/releases/download/v1.0.0/lisp-1.0.1.zip",
+        "url": "https://github.com/sherhn/Light-Modules/releases/download/v1.0.1/lisp-1.0.1.zip",
         "size": 24225,
         "sha256": "1ea897d2a61da6a0c9c533bc9ca005a0ddcd27471e38dd4253a4c5be1378bec2"
       }
@@ -104,7 +104,7 @@
       },
       "min_ide": "1.1.0",
       "archive": {
-        "url": "https://github.com/sherhn/Light-Modules/releases/download/v1.0.0/c-cpp-1.3.0.zip",
+        "url": "https://github.com/sherhn/Light-Modules/releases/download/v1.0.1/c-cpp-1.3.0.zip",
         "size": 41793,
         "sha256": "f0fdd2a4e8cb46b1f98a9262ea987c1a82a0440edd25bf81fd87f5e4268b730b"
       }
@@ -153,7 +153,7 @@
       },
       "min_ide": "1.1.0",
       "archive": {
-        "url": "https://github.com/sherhn/Light-Modules/releases/download/v1.0.0/python-1.1.1.zip",
+        "url": "https://github.com/sherhn/Light-Modules/releases/download/v1.0.1/python-1.1.1.zip",
         "size": 31599,
         "sha256": "87c679255fca332255a2cca990d533c2bf4fcb86836e974d52d6a5a551296d68"
       }
@@ -198,7 +198,7 @@
       },
       "min_ide": "1.1.0",
       "archive": {
-        "url": "https://github.com/sherhn/Light-Modules/releases/download/v1.0.0/assembler-1.0.1.zip",
+        "url": "https://github.com/sherhn/Light-Modules/releases/download/v1.0.1/assembler-1.0.1.zip",
         "size": 42556,
         "sha256": "5f61dace725e458723ca4d043677089b20a1a8e99fb3681290c39699649595e7"
       }
@@ -253,7 +253,7 @@
       },
       "min_ide": "1.1.0",
       "archive": {
-        "url": "https://github.com/sherhn/Light-Modules/releases/download/v1.0.0/html-1.0.1.zip",
+        "url": "https://github.com/sherhn/Light-Modules/releases/download/v1.0.1/html-1.0.1.zip",
         "size": 88333,
         "sha256": "20723096a9dd18e17aadee1a99910231812846d19953f644f7873c03aa697101"
       }
@@ -301,7 +301,7 @@
       },
       "min_ide": "1.1.0",
       "archive": {
-        "url": "https://github.com/sherhn/Light-Modules/releases/download/v1.0.0/css-1.0.1.zip",
+        "url": "https://github.com/sherhn/Light-Modules/releases/download/v1.0.1/css-1.0.1.zip",
         "size": 48907,
         "sha256": "a476c812643bc4dfd7dae5d6780ca9887d1cb127351085c09d484169e44ee5fa"
       }
@@ -350,7 +350,7 @@
       },
       "min_ide": "1.1.0",
       "archive": {
-        "url": "https://github.com/sherhn/Light-Modules/releases/download/v1.0.0/markdown-1.1.1.zip",
+        "url": "https://github.com/sherhn/Light-Modules/releases/download/v1.0.1/markdown-1.1.1.zip",
         "size": 32847,
         "sha256": "94347f87db33a70719a9089210a6045f276c0fc04c9e3b2baaa729d5cfccb4a6"
       }
@@ -395,7 +395,7 @@
       },
       "min_ide": "1.1.0",
       "archive": {
-        "url": "https://github.com/sherhn/Light-Modules/releases/download/v1.0.0/restructuredtext-1.1.1.zip",
+        "url": "https://github.com/sherhn/Light-Modules/releases/download/v1.0.1/restructuredtext-1.1.1.zip",
         "size": 25363,
         "sha256": "79b3f6dbaaad16de3d0c3087505b2b68fa20942cd65b9defc1a1816b7ec56c76"
       }
@@ -453,7 +453,7 @@
       },
       "min_ide": "1.1.0",
       "archive": {
-        "url": "https://github.com/sherhn/Light-Modules/releases/download/v1.0.0/docker-1.0.1.zip",
+        "url": "https://github.com/sherhn/Light-Modules/releases/download/v1.0.1/docker-1.0.1.zip",
         "size": 28103,
         "sha256": "b42fbf8a84725936d5b6a84e8ca5bc9fdcc380eeb73646626aef341ef0c942e8"
       }
@@ -504,7 +504,7 @@
       },
       "min_ide": "1.1.0",
       "archive": {
-        "url": "https://github.com/sherhn/Light-Modules/releases/download/v1.0.0/javascript-1.5.0.zip",
+        "url": "https://github.com/sherhn/Light-Modules/releases/download/v1.0.1/javascript-1.5.0.zip",
         "size": 42948,
         "sha256": "c3e7160ca292afae75587b2e8d3dd6895135be5553f2681469be6d54efd13fd6"
       }
@@ -553,7 +553,7 @@
       },
       "min_ide": "1.1.0",
       "archive": {
-        "url": "https://github.com/sherhn/Light-Modules/releases/download/v1.0.0/shell-make-1.2.0.zip",
+        "url": "https://github.com/sherhn/Light-Modules/releases/download/v1.0.1/shell-make-1.2.0.zip",
         "size": 31545,
         "sha256": "50390db37bfd223a70f6733f3af870e096fc28baba92dbe11e0aeda9ef0f03bc"
       }
@@ -599,7 +599,7 @@
       },
       "min_ide": "1.1.0",
       "archive": {
-        "url": "https://github.com/sherhn/Light-Modules/releases/download/v1.0.0/json-1.0.1.zip",
+        "url": "https://github.com/sherhn/Light-Modules/releases/download/v1.0.1/json-1.0.1.zip",
         "size": 26146,
         "sha256": "0ca0cba62e9fb3b0aa67485a133cabb874fec9b9051c09416bec1cae085a1f24"
       }
@@ -642,7 +642,7 @@
       },
       "min_ide": "1.1.0",
       "archive": {
-        "url": "https://github.com/sherhn/Light-Modules/releases/download/v1.0.0/toml-1.0.1.zip",
+        "url": "https://github.com/sherhn/Light-Modules/releases/download/v1.0.1/toml-1.0.1.zip",
         "size": 21055,
         "sha256": "3479e2b10c1e456acc45f1ce49e14ac9097abbdc565db13bfeff4ec58ab16988"
       }
@@ -686,7 +686,7 @@
       },
       "min_ide": "1.1.0",
       "archive": {
-        "url": "https://github.com/sherhn/Light-Modules/releases/download/v1.0.0/yaml-1.0.1.zip",
+        "url": "https://github.com/sherhn/Light-Modules/releases/download/v1.0.1/yaml-1.0.1.zip",
         "size": 23319,
         "sha256": "e0046cb910839f0e4207fafd1982789013f93b213c16a88bc4ddd19e9a8fcadc"
       }
@@ -734,7 +734,7 @@
       },
       "min_ide": "1.1.0",
       "archive": {
-        "url": "https://github.com/sherhn/Light-Modules/releases/download/v1.0.0/ini-1.0.1.zip",
+        "url": "https://github.com/sherhn/Light-Modules/releases/download/v1.0.1/ini-1.0.1.zip",
         "size": 20904,
         "sha256": "32e41421e25a3801cdaa06b678837a256bcac7b6d368060fe69373f74ecc3a14"
       }
@@ -782,7 +782,7 @@
       },
       "min_ide": "1.1.0",
       "archive": {
-        "url": "https://github.com/sherhn/Light-Modules/releases/download/v1.0.0/dotenv-1.0.1.zip",
+        "url": "https://github.com/sherhn/Light-Modules/releases/download/v1.0.1/dotenv-1.0.1.zip",
         "size": 23786,
         "sha256": "9a94f3d3274560bd12a17e477eb9ac2174042557d42e7eef56fb99d5735244f4"
       }
@@ -827,11 +827,11 @@
       },
       "min_ide": "1.1.0",
       "archive": {
-        "url": "https://github.com/sherhn/Light-Modules/releases/download/v1.0.0/http-1.0.0.zip",
+        "url": "https://github.com/sherhn/Light-Modules/releases/download/v1.0.1/http-1.0.0.zip",
         "size": 24779,
         "sha256": "77c9be493a24d80d3e352c4e8b3d544705691820d48bb16e2fc9c3eb9186f63d"
       }
     }
   ],
-  "catalog_version": "1.0.0"
+  "catalog_version": "1.0.1"
 }
